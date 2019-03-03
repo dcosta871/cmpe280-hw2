@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Registration</title>
 </head>
-    <form>
+    <form id="myForm" onsubmit="saveFormFields()">
         <p style="padding: 40px;"/>
         <p><label>User ID:</label> <input id="userID" type="text" onkeyup="verifyPasswordValidation();" required></p><br>
         <p><label>Password:</label> <input id="password" type="password" style="display: inline-block"
@@ -38,23 +38,28 @@
             <option value="question4">Capital of India?</option>
             <option value="question5">Capital of USA?</option>
         </select></p><br>
-        <p><label>Security Answer:</label> <input type="text" required></p><br>
+        <p><label>Security Answer:</label> <input id="answer1" type="text" required></p><br>
         <p><label>Security Question:</label>
         <select type="text">
-            <option value="question1">Sum of 2 + 3 =</option>
             <option value="question2">Sum of 100 + 200</option>
             <option value="question3">23 x 100 =</option>
             <option value="question4">Capital of India?</option>
             <option value="question5">Capital of USA?</option>
+            <option value="question1">Sum of 2 + 3 =</option>
         </select></p><br>
-        <p><label>Security Answer:</label> <input type="text" required></p><br>
-        <p><label>Mobile:</label> <input type="text" required></p><br>
-        <p><label style="vertical-align: middle;">Address:</label> <textarea type="text" required></textarea></p><br>
+        <p><label>Security Answer:</label> <input id="answer2" type="text" required></p><br>
+        <p><label>Mobile:</label> <input id="mobile" type="tel" required></p><br>
+        <p><label style="vertical-align: middle;">Address:</label> <textarea id="address" type="text" required></textarea></p><br>
         <p><label></label><span>Areas you may be interested in, please select one or more:</span></p><br>
-        <p><label></label><input type="checkbox">Java<label></label><input type="checkbox">C</p><br>
-        <p><label></label><input type="checkbox">C++<label></label><input type="checkbox">Python<br></p><br>
-        <p><label></label><input type="submit"><button style="margin-left: 15px;" type="button">Cancel</button></p>
+        <input style="display: none;" id="formSubmit" type="submit">
     </form>
+    <div style="height: 60px; width: 300px; border: 1px solid; margin-left: 12%; padding: 10px;">
+        <span style="margin-right: 70px"><input id="javaCheckbox" type="checkbox" value="java">Java</span>
+        <span><input id="cCheckbox" type="checkbox" value="cCheckbox">C</span><br><br>
+        <span style="margin-right: 70px"><input id="cplusplusCheckbox" type="checkbox" value="cplusplus">C++</span>
+        <span><input id="pythonCheckbox" type="checkbox" value="python">Python</span><br>
+    </div><br>
+    <div style="margin-left: 12%"><button onclick="document.getElementById('formSubmit').click();">Submit</button><button style="margin-left: 15px;" type="button">Cancel</button></div>
 </body>
 <style>
     form {
@@ -224,6 +229,32 @@
 
     function hidePasswordRequirements() {
         document.getElementById("passwordRequirementsDiv").style.display = "none";
+    }
+
+    function saveFormFields() {
+        var form = document.getElementById('myForm');
+        if (form.checkValidity()) {
+            localStorage.setItem("userID", document.getElementById("userID").value);
+            localStorage.setItem("password", document.getElementById("password").value);
+            localStorage.setItem("answer1", document.getElementById("answer1").value);
+            localStorage.setItem("answer2", document.getElementById("answer2").value);
+            localStorage.setItem("mobile", document.getElementById("mobile").value);
+            localStorage.setItem("address", document.getElementById("address").value);
+            var interestList = [];
+            if (document.getElementById("javaCheckbox").checked) {
+                interestList.push("Java");
+            }
+            if (document.getElementById("cCheckbox").checked) {
+                interestList.push("C");
+            }
+            if (document.getElementById("cplusplusCheckbox").checked) {
+                interestList.push("C++");
+            }
+            if (document.getElementById("pythonCheckbox").checked) {
+                interestList.push("Python");
+            }
+            localStorage.setItem("interests", interestList);
+        }
     }
 </script>
 </html>
