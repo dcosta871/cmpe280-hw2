@@ -4,52 +4,57 @@
     <meta charset="UTF-8">
     <title>Registration</title>
 </head>
-<body>
-    <div style="padding: 40px;">
-        <form>
-            <p><label>User ID:</label> <input id="userID" type="text" onkeyup="verifyPasswordValidation();" required></p><br>
-            <p><label>Password:</label> <input id="password" type="password" style="display: inline-block"
-                                            onchange="verifyPasswordsMatch();" onkeyup="verifyPasswordValidation();"
-                                               required> </p>
-            <div style="position: absolute; margin-left: 30%; margin-top: -50px; border: 1px solid; padding: 10px;">
-                <span id="textLengthCheck">&#10060;</span> Between 7 and 20 characters<br>
-                <span id="alphaCharacterCheck">&#10060;</span> 4 alpha characters<br>
-                <span id="numericOrSpecialCharacterCheck">&#10060;</span> At least one numeric or special character<br>
-                <span id="spaceCheck">&#10060;</span> No spaces<br>
-                <span id="userIdCheck">&#10060;</span> Different from user ID<br>
-            </div>
-            <br>
-            <p><label>Verify Password:</label> <input id="verifyPassword" type="password"
-                                                      onchange="verifyPasswordsMatch()" required></p><br>
-            <p><label>Email Address:</label> <input id="emailAddress" type="email" placeholder="Enter email"
-                                                    onchange="verifyEmailsMatch()" required></p><br>
-            <p><label>Verify Email Address:</label> <input id="verifyEmailAddress" type="email" placeholder="Enter email"
-                                                           onchange="verifyEmailsMatch()" required></p><br>
-            <p><label>Security Question:</label>
-            <select type="text">
-                <option value="question1">Sum of 2 + 3 =</option>
-                <option value="question2">Sum of 100 + 200</option>
-                <option value="question3">23 x 100 =</option>
-                <option value="question4">Capital of India?</option>
-                <option value="question5">Capital of USA?</option>
-            </select></p><br>
-            <p><label>Security Answer:</label> <input type="text" required></p><br>
-            <p><label>Security Question:</label>
-            <select type="text">
-                <option value="question1">Sum of 2 + 3 =</option>
-                <option value="question2">Sum of 100 + 200</option>
-                <option value="question3">23 x 100 =</option>
-                <option value="question4">Capital of India?</option>
-                <option value="question5">Capital of USA?</option>
-            </select></p><br>
-            <p><label>Security Answer:</label> <input type="text" required></p><br>
-            <p><label>Mobile:</label> <input type="text" required></p><br>
-            <p><label style="vertical-align: middle;">Address:</label> <textarea type="text" required></textarea></p><br>
-            <p><label></label><span>Areas you may be interested in, please select one or more:</span><br>
-            <p><label></label><textarea style="width: 98%;" type="text"></textarea></p><br>
-            <p><label></label><input type="submit"><button style="margin-left: 15px;" type="button">Cancel</button></p>
-        </form>
-    </div>
+    <form>
+        <p style="padding: 40px;"/>
+        <p><label>User ID:</label> <input id="userID" type="text" onkeyup="verifyPasswordValidation();" required></p><br>
+        <p><label>Password:</label> <input id="password" type="password" style="display: inline-block"
+                                        onchange="verifyPasswordsMatch();" onkeyup="verifyPasswordValidation();"
+                                           onfocus="showPasswordRequirements()" onblur="hidePasswordRequirements()"
+                                           required> </p>
+        <div id="passwordRequirementsDiv" style="display: none; position: absolute; margin-left: 30%;
+        margin-top: -50px; border: 1px solid; padding: 10px;">
+            <span id="textLengthCheck">&#10060;</span> Between 7 and 20 characters<br>
+            <span id="alphaCharacterCheck">&#10060;</span> 4 alpha characters<br>
+            <span id="numericOrSpecialCharacterCheck">&#10060;</span> At least one numeric or special character<br>
+            <span id="spaceCheck">&#10060;</span> No spaces<br>
+            <span id="userIdCheck">&#10060;</span> Different from user ID<br>
+        </div>
+        <span id="passwordStrength" style="position: absolute; margin-left: 30%;
+        margin-top: 100px; padding: 10px; width: 30%;">password strength: <span id="passwordStrengthSpan" style="background-color: white; border: 1px solid;
+        width: 50%; display: inline-block; text-align: center;">
+            <b id="passwordStrengthDescription">invalid</b></span></span>
+        <br>
+        <p><label>Verify Password:</label> <input id="verifyPassword" type="password"
+                                                  onchange="verifyPasswordsMatch()" required></p><br>
+        <p><label>Email Address:</label> <input id="emailAddress" type="email" placeholder="Enter email"
+                                                onchange="verifyEmailsMatch()" required></p><br>
+        <p><label>Verify Email Address:</label> <input id="verifyEmailAddress" type="email" placeholder="Enter email"
+                                                       onchange="verifyEmailsMatch()" required></p><br>
+        <p><label>Security Question:</label>
+        <select type="text">
+            <option value="question1">Sum of 2 + 3 =</option>
+            <option value="question2">Sum of 100 + 200</option>
+            <option value="question3">23 x 100 =</option>
+            <option value="question4">Capital of India?</option>
+            <option value="question5">Capital of USA?</option>
+        </select></p><br>
+        <p><label>Security Answer:</label> <input type="text" required></p><br>
+        <p><label>Security Question:</label>
+        <select type="text">
+            <option value="question1">Sum of 2 + 3 =</option>
+            <option value="question2">Sum of 100 + 200</option>
+            <option value="question3">23 x 100 =</option>
+            <option value="question4">Capital of India?</option>
+            <option value="question5">Capital of USA?</option>
+        </select></p><br>
+        <p><label>Security Answer:</label> <input type="text" required></p><br>
+        <p><label>Mobile:</label> <input type="text" required></p><br>
+        <p><label style="vertical-align: middle;">Address:</label> <textarea type="text" required></textarea></p><br>
+        <p><label></label><span>Areas you may be interested in, please select one or more:</span></p><br>
+        <p><label></label><input type="checkbox">Java<label></label><input type="checkbox">C</p><br>
+        <p><label></label><input type="checkbox">C++<label></label><input type="checkbox">Python<br></p><br>
+        <p><label></label><input type="submit"><button style="margin-left: 15px;" type="button">Cancel</button></p>
+    </form>
 </body>
 <style>
     form {
@@ -77,11 +82,18 @@
         var letterCount = 0;
         var numberPresent = false;
         var specialCharacterPresent = false;
+        var validationPassed = true;
+        var number = null;
+        var letter = null;
+        var uniqueSpecialCharacterOrNumber = false;
+        var uniqueLetter = false;
+
         passwordEle.setCustomValidity('');
 
         if (password.length < 7 || password.length > 20) {
             passwordEle.setCustomValidity('Passwords length must be 7-20 characters');
             document.getElementById('textLengthCheck').innerHTML = "&#10060";
+            validationPassed = false;
         }
         else {
             document.getElementById('textLengthCheck').innerHTML = "&#9989";
@@ -90,9 +102,21 @@
         for (var i = 0; i < password.length; i++) {
             if (password.charAt(i).toLowerCase().match(/[a-z]/i)) {
                 letterCount++;
+                if (letter === null) {
+                    letter = password.charAt(i);
+                }
+                else if (letter !== password.charAt(i)) {
+                    uniqueLetter = true;
+                }
             }
             else if ('0123456789'.indexOf(password.charAt(i)) !== -1) {
                 numberPresent = true;
+                if (uniqueSpecialCharacterOrNumber === null) {
+                    uniqueSpecialCharacterOrNumber = password.charAt(i);
+                }
+                else if (uniqueSpecialCharacterOrNumber !== password.charAt(i)) {
+                    uniqueSpecialCharacterOrNumber = true;
+                }
             }
             else if ('!#$%'.indexOf(password.charAt(i)) !== -1) {
                 specialCharacterPresent = true;
@@ -105,6 +129,7 @@
         if (letterCount < 4) {
             passwordEle.setCustomValidity('Passwords must have at least 4 alpha characters');
             document.getElementById('alphaCharacterCheck').innerHTML = "&#10060";
+            validationPassed = false;
         }
         else {
             document.getElementById('alphaCharacterCheck').innerHTML = "&#9989";
@@ -113,6 +138,7 @@
         if (numberPresent === false && specialCharacterPresent === false ) {
             passwordEle.setCustomValidity('Passwords must have at least 1 number or 1 special character');
             document.getElementById('numericOrSpecialCharacterCheck').innerHTML = "&#10060";
+            validationPassed = false;
         }
         else {
             document.getElementById('numericOrSpecialCharacterCheck').innerHTML = "&#9989";
@@ -121,6 +147,7 @@
         if (spaceValid === false){
             passwordEle.setCustomValidity('Passwords must not contain spaces');
             document.getElementById('spaceCheck').innerHTML = "&#10060";
+            validationPassed = false;
         }
         else {
             document.getElementById('spaceCheck').innerHTML = "&#9989";
@@ -134,6 +161,38 @@
             document.getElementById('userIdCheck').innerHTML = "&#9989";
         }
 
+        if (!validationPassed) {
+            document.getElementById("passwordStrengthSpan").style.backgroundColor = "white";
+            document.getElementById("passwordStrengthDescription").innerHTML = "invalid";
+        }
+        else {
+            var score = 0;
+            if (uniqueLetter === true) {
+                score++;
+            }
+            if (uniqueSpecialCharacterOrNumber === true) {
+                score++;
+            }
+            if (password.length > 10) {
+                score++;
+            }
+            if (password.length > 12) {
+                score++;
+            }
+
+            if (score < 2) {
+                document.getElementById("passwordStrengthSpan").style.backgroundColor = "red";
+                document.getElementById("passwordStrengthDescription").innerHTML = "weak";
+            }
+            else if (score < 4) {
+                document.getElementById("passwordStrengthSpan").style.backgroundColor = "yellow";
+                document.getElementById("passwordStrengthDescription").innerHTML = "medium";
+            }
+            else if (score === 4){
+                document.getElementById("passwordStrengthSpan").style.backgroundColor = "green";
+                document.getElementById("passwordStrengthDescription").innerHTML = "strong";
+            }
+        }
     }
     function verifyPasswordsMatch() {
         var passwordEle = document.getElementById('password');
@@ -157,6 +216,14 @@
             // input is valid -- reset the error message
             verifyEmailAddressEle.setCustomValidity('');
         }
+    }
+
+    function showPasswordRequirements() {
+        document.getElementById("passwordRequirementsDiv").style.display = "block";
+    }
+
+    function hidePasswordRequirements() {
+        document.getElementById("passwordRequirementsDiv").style.display = "none";
     }
 </script>
 </html>
